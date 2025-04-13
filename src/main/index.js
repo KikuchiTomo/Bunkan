@@ -8,8 +8,13 @@ function createWindow() {
   const mainWindow = new BrowserWindow({
     width: 900,
     height: 670,
-    show: false,
-    autoHideMenuBar: true,
+    //transparent: true,
+    //frame: true,
+    // show: false,   
+    titleBarStyle: 'hidden',
+    //backgroundMaterial: 'acrylic',
+    //toolbar: true,
+    // autoHideMenuBar: true,
     ...(process.platform === 'linux' ? { icon } : {}),
     webPreferences: {
       preload: join(__dirname, '../preload/index.js'),
