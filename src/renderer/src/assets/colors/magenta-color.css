@@ -19,7 +19,9 @@
 	--tab-bar-active-underline-color: #c800ff;
 	--tab-bar-inactive-background-color: rgba(191, 176, 190, 0.35);
 	--tab-bar-inactive-underline-color: #c800ff0b;
-
+	--tab-bar-close-button-background-color: rgba(0, 0, 0, 0.03);
+	--tab-bar-close-button-background-color-hover: rgba(0, 0, 0, 0.1);
+	--tab-bar-drag-target-border-color: #2e2e2e;
 	
 	--tab-bar-inactive-label-color: #646464;
 	--tab-bar-active-label-color: #c800ff;

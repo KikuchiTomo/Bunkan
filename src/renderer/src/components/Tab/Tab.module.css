@@ -1,69 +1,102 @@
+/* Tab.module.css */
 .header {
 	display: flex;
-	gap: 0px;
-	
-	/* width: max-content; */
+	list-style: none;
 	padding: 0;
 	margin: 0;
-	list-style: none;	
-	border-radius: 0px;	
-	background-color: var(--tab-bar-inactive-background-color);
-	
+	background: var(--title-bar-background-color);
+	border-bottom: 1px solid var(--title-bar-bottom-border-color);
+	overflow-x: auto;
+	height: 40px;
+
 	-ms-overflow-style: none;
 	scrollbar-width: none;
-	height: 37.5px;
-
-	overflow-x: scroll;
-	white-space: nowrap;
-	overflow-y: hidden;
-}
+  }
   
+  .column {
+	margin: 0;
+	padding: 0;
+	cursor: grab;
+	-webkit-app-region: no-drag;
 
-.column:hover, .button:hover{
-	background-color: white;
-	transition: 0.1s;
-}
+	font-family: 'Inter Variable', sans-serif;
+	font-weight: 500 !important;
+	font-size: 14px;
 
-  .column {			
-	border-right: 1px solid var(--tab-bar-split-border-color);
-	/* overflow-x: hidden; */
-	max-width: 200px;
+	color: var(--tab-bar-inactive-label-color);
+	background-color: var(--tab-bar-inactive-background-color);
+  }
+  
+  .label{
 	text-overflow: ellipsis;
+	max-width: 200px;	
+	overflow-x: hidden;
+  }
 
-	font-family: 'Inter Variable', sans-serif;	
+  .column.dragging {
+	opacity: 0.5;
   }
   
   .button {
+	display: flex;
+
+	align-items: center;
+	padding: 0 10px 0 16px;
+	border: none;
+	background: transparent;
+	
+	cursor: pointer;
 
 	font-family: 'Inter Variable', sans-serif;
-	font-weight: 500 !important;	
+	font-weight: 500 !important;
+	font-size: 14px;
 
-	text-overflow: ellipsis;
-	max-width: 200px;
-	overflow-x: hidden;
-	
-	font-size: 13px;
-	display: block;
-	width: 100%;
-	height: 100%;	
-	padding: 10px 12px;
-	font-weight: bold;
-	color: var(--tab-bar-inactive-label-color);
-	cursor: pointer;
-	background-color: var(--tab-bar-inactive-background-color);
+	border-bottom: 2px solid transparent;
+	/* position: relative; */
 
-	border: none;
-	border-bottom: 2px solid transparent;	
-	-webkit-app-region: no-drag;	
+	white-space: nowrap;
+	height: 40px;
+	-webkit-app-region: no-drag;
+
+	border-right: 1px solid var(--tab-bar-split-border-color);
   }
   
-  .active {
-	color: var(--tab-bar-active-label-color);
+  .button.active {
+	border-bottom-color: var(--tab-bar-active-underline-color);
+	font-weight: 500;
 	background-color: var(--tab-bar-active-background-color);
-	border-bottom: 2px solid var(--tab-bar-active-underline-color);	
+	color: var(--tab-bar-active-label-color);
+  }
+  
+  .closeButton {
+	margin-left: 8px;
+	width: 25px;
+	height: 25px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 50%;
+	font-size: 10px;
+	color: var(--tab-bar-inactive-label-color);
+	cursor: pointer;
+	-webkit-app-region: no-drag;
+	background-color: var(--tab-bar-close-button-background-color);
+  }
+  
+  .closeButton:hover {
+	background-color: var(--tab-bar-close-button-background-color-hover);
   }
   
   .tabBody {
-	padding: 0;
+	padding: 16px;
+	border: none;
+	outline: none;
   }
-  
+
+.dropLeft {
+	border-left: 1px solid var(--tab-bar-drag-target-border-color);
+}
+
+.dropRight {
+	border-right: 1px solid var(--tab-bar-drag-target-border-color);
+}
