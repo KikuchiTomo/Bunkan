@@ -1,35 +1,36 @@
 import React from 'react';
 import { Tab, TabItem } from './components/Tab/Tab';
 import { TitleBar } from './components/TitleBar/TitleBar';
+import { SideBarLayout, SideBarLayoutItem } from './components/SideBarLayout/SideBarLayout';
 import classNames from 'classnames';
 import styles from './App.module.css';
 
+// https://codesandbox.io/p/sandbox/react-resizable-sidebar-kz9de?file=%2Fsrc%2FApp.js
 const App: React.FC = () => {
-  return <div className={styles.main}>
-    <TitleBar title="My Application" />
-    <Tab defaultKey="tab1">
-      <TabItem tabKey="tab1" label="Tab 1">
-        <div>Content for Tab 1</div>
-      </TabItem>
-      <TabItem tabKey="tab2" label="Tab 2">
-        <div>Content for Tab 2</div>
-      </TabItem>
-      <TabItem tabKey="tab3" label="Tab 3">
-        <Tab defaultKey="tab3-1">
-          <TabItem tabKey="tab3-1" label="Tab 3-1">
-            <div>Content for Tab 3-1</div>
-          </TabItem>
-          <TabItem tabKey="tab3-2" label="Tab 3-2">
-            <div>Content for Tab 3-2</div>
-          </TabItem>
-          <TabItem tabKey="tab3-3" label="Tab 3-3">
-            <div>Content for Tab 3-3</div>
-          </TabItem>
+  return <>
 
-        </Tab>
-      </TabItem>
-      </Tab>
-  </div>;
+    <div className={styles.main}>
+      <SideBarLayout className={styles.layout}>
+        <SideBarLayoutItem contentType="left-sidebar" className={styles.sidebar}>
+          <div className={styles.content}>
+            aaa
+          </div>
+        </SideBarLayoutItem>
+        <SideBarLayoutItem contentType="content" className={styles.content}>
+          <div className={styles.content}>
+            <TitleBar title="Hello" />       
+            Hello
+          </div>
+        </SideBarLayoutItem>
+        <SideBarLayoutItem contentType="right-sidebar" className={styles.sidebar}>
+          <div className={styles.content}>
+              dddd
+          </div>
+        </SideBarLayoutItem>
+      </SideBarLayout>
+
+    </div>
+  </>
 };
 
 export default App;

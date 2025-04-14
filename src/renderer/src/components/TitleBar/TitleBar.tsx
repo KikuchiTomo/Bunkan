@@ -18,13 +18,12 @@ type TitleBarProps = {
 
 export const TitleBar: FC<TitleBarProps> = ({ title }) => {
 	  return (
-	<div className={styles.titleBar}>
-	  <input className={styles.title}/>
-	  <div className={styles.buttonGroup}>
-		<button className={classNames(styles.button, styles.close)} />
-		<button className={classNames(styles.button, styles.minimize)} />
-		<button className={classNames(styles.button, styles.maximize)} />
-	  </div>
-	</div>
+		<div className={styles.titleBar}>		
+			<div className={styles.buttonGroup}>		
+			</div>	  
+			<input className={styles.title} placeholder={title} />
+	  		<div className={styles.buttonGroup}>		
+	  		</div>
+		</div>
   );
 }

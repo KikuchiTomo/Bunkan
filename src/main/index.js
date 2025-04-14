@@ -11,7 +11,8 @@ function createWindow() {
     //transparent: true,
     //frame: true,
     // show: false,   
-    titleBarStyle: 'hidden',
+    titleBarStyle: 'hiddenInset',
+    trafficLightPosition: { x: 10, y: 20 }, 
     //backgroundMaterial: 'acrylic',
     //toolbar: true,
     // autoHideMenuBar: true,
@@ -30,6 +31,23 @@ function createWindow() {
     shell.openExternal(details.url)
     return { action: 'deny' }
   })
+
+    // メインウィンドウが読み込まれた後にCSSを注入
+  mainWindow.webContents.on('did-finish-load', () => {
+    // macOSの場合のみCSSを注入
+    if (process.platform === 'darwin') {
+      mainWindow.webContents.insertCSS(`
+        /* macOS信号機ボタンの位置調整 */
+        .titlebar-controls-container {
+          padding-top: 20px !important; /* 数値を調整して位置を下げる */
+        }
+        /* または */
+        :root {
+          --traffic-light-offset: 20px; /* 必要に応じて調整 */
+        }
+      `);
+    }
+});
 
   // HMR for renderer base on electron-vite cli.
   // Load the remote URL for development or the local html file for production.
