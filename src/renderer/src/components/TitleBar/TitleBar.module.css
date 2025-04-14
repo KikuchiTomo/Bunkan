@@ -1,10 +1,11 @@
 .titleBar{
 	height: 40px;
 	width: 100%;
-	background: rgba(255, 255, 255, 0.841);
+	background: var(--title-bar-background-color);
 	-webkit-app-region: drag;
-	border-bottom: 1px solid rgb(214, 214, 214);
+	border-bottom: 1px solid var(--title-bar-bottom-border-color);
 	border-radius: 6px 6px 0 0;
+
 }
 
 .title{
@@ -16,6 +17,7 @@
 	width: calc(100% - 16px - 12px);
 	line-height: 40px;	
 	background: transparent;
+	font-family: "Fira Code", monospace;
 }
 
 

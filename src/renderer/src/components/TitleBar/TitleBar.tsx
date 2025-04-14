@@ -11,6 +11,8 @@ import {
 } from "react";
 
 import styles from "./TitleBar.module.css";
+import "@fontsource-variable/roboto-mono/wght.css";
+import "@fontsource/fira-code/400.css";
 
 type TitleBarProps = {
 	title: string;
@@ -18,7 +20,7 @@ type TitleBarProps = {
 
 export const TitleBar: FC<TitleBarProps> = ({ title }) => {
 	  return (
-		<div className={styles.titleBar}>		
+		<div className={classNames(styles.titleBar)}>		
 			<div className={styles.buttonGroup}>		
 			</div>	  
 			<input className={styles.title} placeholder={title} />

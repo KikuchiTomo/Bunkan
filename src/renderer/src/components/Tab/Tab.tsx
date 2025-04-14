@@ -15,6 +15,8 @@ import styles from "./Tab.module.css";
 type TabKey = string | number;
 type TabLabel = string | number | JSX.Element;
 
+import '@fontsource-variable/inter';
+
 type TabProps = {
   defaultKey: TabKey;
   children: ReactElement<TabItemProps> | ReactElement<TabItemProps>[];

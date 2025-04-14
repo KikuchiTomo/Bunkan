@@ -1,0 +1,26 @@
+:root{
+	--window-background-color: rgba(214, 186, 245, 1.0); 
+	--window-background-noise-color: rgb(107, 54, 160);
+	--window-background-noise-deg: 55deg;
+	--window-content-background-color: rgba(255, 255, 255, 0);		
+	--window-background-filter-contrast: 170%;
+	--window-background-filter-brightness: 1000%;	
+	
+	--main-content-boxshadow-color: rgba(73, 73, 73, 0.571);
+	--main-content-background-color: rgba(242, 242, 242, 0.784);
+
+	--side-bar-resizer-color: #c800ff;
+
+	--title-bar-background-color: rgba(248, 236, 250, 0.784);
+	--title-bar-bottom-border-color: rgba(159, 128, 157, 0.35);
+
+	--tab-bar-split-border-color: rgba(159, 128, 157, 0.35);
+	--tab-bar-active-background-color: rgb(254, 243, 255);
+	--tab-bar-active-underline-color: #c800ff;
+	--tab-bar-inactive-background-color: rgba(191, 176, 190, 0.35);
+	--tab-bar-inactive-underline-color: #c800ff0b;
+
+	
+	--tab-bar-inactive-label-color: #646464;
+	--tab-bar-active-label-color: #c800ff;
+}

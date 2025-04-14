@@ -5,7 +5,7 @@
 	height: calc(100vh - 20px);
 	width: 100%;
 
-	background: rgba(255, 255, 255, 0);	
+	background: var(--window-content-background-color);
 }
 
 .open{
@@ -21,9 +21,9 @@
 	display: block;
 	height: calc(100vh - 20px);
 	overflow: hidden;
-	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+	box-shadow: var(--main-content-boxshadow-color) 0px 5px 15px;
 	border-radius: 6px;
-	background: rgb(242, 242, 242);
+	background: var(--main-content-background-color);
 }
 
 .sidebar{
@@ -63,7 +63,7 @@
 .resizer:hover .resizerBar{
 	width: 4px;	
 	border-radius: 2px;
-	background: #c800ff;
+	background: var(--side-bar-resizer-color);
 	transition: 0.2s;
 	height: 100%;
 }
