@@ -11,18 +11,18 @@ const App: React.FC = () => {
 
     <div className={styles.main}>
       <SideBarLayout className={styles.layout}>
-        <SideBarLayoutItem contentType="left-sidebar" className={styles.sidebar}>
+        <SideBarLayoutItem contentType="left-sidebar" className={styles.sidebar} isClosed={false}>
           <div className={styles.content}>
             aaa
           </div>
         </SideBarLayoutItem>
-        <SideBarLayoutItem contentType="content" className={styles.content}>
+        <SideBarLayoutItem contentType="content" className={styles.content} isClosed={false}>
           <div className={styles.content}>
             <TitleBar title="Hello" />       
             Hello
           </div>
         </SideBarLayoutItem>
-        <SideBarLayoutItem contentType="right-sidebar" className={styles.sidebar}>
+        <SideBarLayoutItem contentType="right-sidebar" className={styles.sidebar} isClosed={true}>
           <div className={styles.content}>
               dddd
           </div>

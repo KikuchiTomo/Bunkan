@@ -19,7 +19,9 @@ html::before{
 	height: 100%;
 	content: ' ';	
 	z-index: 11;
-	position: absolute
+	position: absolute;
+
+	-webkit-app-region: drag;	
 }
 
 html::after{	

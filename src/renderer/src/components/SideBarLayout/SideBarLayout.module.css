@@ -1,10 +1,3 @@
-.sidebar{
-	display: block;
-	height: calc(100vh - 20px);	
-
-	-webkit-app-region: drag;	
-}
-
 .layout{
 	display: flex;
 	flex-direction: row;
@@ -16,26 +9,14 @@
 }
 
 .open{
-	width: 20%
+	display: flex
 }
 
-.close{
-	width: 0;
+.closed{
+	display: none;
 }	
 
-
-.right{
-	
-	background-color: red;
-}
-
-.left{
-	
-	background-color: blue;
-}
-
 .content{
-
 	flex: 1; 
 	display: block;
 	height: calc(100vh - 20px);
@@ -43,4 +24,55 @@
 	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 	border-radius: 6px;
 	background: rgb(242, 242, 242);
+}
+
+.sidebar{
+	display: flex;
+	height: calc(100vh - 20px);	
+	-webkit-app-region: drag;	
+	width: 300px;
+}
+
+.resizer{		
+	flex-grow: 0;
+	flex-shrink: 0;
+	flex-basis: 7px;	
+	cursor: col-resize;
+	resize: horizontal;
+	height: calc(100vh - 20px);
+
+	-webkit-app-region: no-drag;
+}
+
+.right .resizer{
+	justify-self: flex-start;
+}
+
+.left .resizer{
+	justify-self: flex-end;
+}
+
+.left .resizer .resizerBar{
+	margin-right: 3px;
+}
+
+.right .resizer .resizerBar{
+	margin-left: 3px;
+}
+
+.resizer:hover .resizerBar{
+	width: 4px;	
+	border-radius: 2px;
+	background: #c800ff;
+	transition: 0.2s;
+	height: 100%;
+}
+
+.closed + .resizer{
+	transform: translateX(-6px);
+}
+
+.inner{	
+	flex-direction: row;	
+	width: calc(100% - 6px);
 }

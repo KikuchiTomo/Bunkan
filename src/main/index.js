@@ -6,13 +6,13 @@ import icon from '../../resources/icon.png?asset'
 function createWindow() {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    width: 900,
-    height: 670,
+    width: 1600,
+    height: 1068,
     //transparent: true,
     //frame: true,
     // show: false,   
     titleBarStyle: 'hiddenInset',
-    trafficLightPosition: { x: 10, y: 20 }, 
+    trafficLightPosition: { x: 23, y: 23 }, 
     //backgroundMaterial: 'acrylic',
     //toolbar: true,
     // autoHideMenuBar: true,
