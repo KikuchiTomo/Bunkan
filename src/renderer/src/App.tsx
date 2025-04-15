@@ -1,9 +1,8 @@
-import React, { JSX, useState } from 'react';
-import { createIntl, createIntlCache, RawIntlProvider, FormattedMessage, FormattedNumber } from 'react-intl'
-import { Tab, TabItem } from './components/Tab/Tab';
+import React from 'react';
+import { createIntl, createIntlCache, RawIntlProvider } from 'react-intl';
 import { TitleBar } from './components/TitleBar/TitleBar';
 import { SideBarLayout, SideBarLayoutItem } from './components/SideBarLayout/SideBarLayout';
-import classNames from 'classnames';
+import { TabManagerProvider, TabManager, useTabManager } from './tabs/TabManager';
 
 import ja from './assets/lang/ja-JP.json';
 import en from './assets/lang/en-US.json';
@@ -15,87 +14,93 @@ const locale = navigator.language;
 function selectMessages(locale: string) {
   switch(locale) {
     case 'en':
-      return en
+      return en;
     case 'ja':
-      return ja
+      return ja;
     default:
-      return ja
+      return ja;
   }
 }
 
-const cache = createIntlCache()
+const cache = createIntlCache();
 export const intl = createIntl({
   locale,
   defaultLocale: "ja",
   messages: selectMessages(locale)
-}, cache)
+}, cache);
 
-type TabContentProps = {
-  key: string | number;
-  label: string | JSX.Element;
+// タブを開くためのコントロールコンポーネント
+const TabControls: React.FC = () => {
+  const { addTab } = useTabManager();
+  
+  const handleOpenPdf = () => {
+    // ローカルパスを直接指定してPDFを開く
+    addTab({
+      label: "Zotero PDF",
+      type: "pdf",
+      props: { 
+        src: "/Users/tomokikuchi/Zotero/storage/JP8TZZU9/Tamašauskaitė と Groth - 2023 - Defining a Knowledge Graph Development Process Through a Systematic Review.pdf" 
+      }
+    });
+  };
+  
+  // 必要に応じて、ダイアログからPDFを選択する関数も追加できます
+  const handleSelectPdf = async () => {
+    try {
+      // ファイル選択ダイアログを表示するには別途実装が必要です
+      // (Electronの場合、mainプロセスでdialog.showOpenDialogを実装し、
+      // preloadスクリプトで公開する必要があります)
+      
+      // ここでは例として直接パスを指定します
+      addTab({
+        label: "別のPDF文書",
+        type: "pdf",
+        props: { 
+          src: "/Users/tomokikuchi/Zotero/storage/JP8TZZU9/Tamašauskaitė と Groth - 2023 - Defining a Knowledge Graph Development Process Through a Systematic Review.pdf" 
+        }
+      });
+    } catch (error) {
+      console.error('PDFを開けませんでした:', error);
+    }
+  };
+  
+  return (
+    <div className={styles.tabControls}>
+      <button onClick={handleOpenPdf}>Zotero PDFを開く</button>
+      <button onClick={handleSelectPdf}>別のPDFを開く</button>
+    </div>
+  );
 };
 
+
+// Main App component is now much cleaner
 const App: React.FC = () => {
-  // const intl = useIntl();
-  const titleBarPlaceholder = intl.formatMessage({ id: 'title_bar_placeholder' })
-  
-  // State to keep track of tabs
-  const [tabs, setTabs] = useState<TabContentProps[]>([
-    { key: "tab", label: "Sample PDF" },
-    { key: "tab2", label: "A Review of fucking your research" },
-    { key: "tab3", label: "A Review of fucking your research ww" },
-    { key: "tab4", label: "A Review of fucking your research ssssss" },
-  ]);
-  
-  // Handle tab close
-  const handleTabClose = (tabKey: string | number) => {
-    setTabs(prevTabs => prevTabs.filter(tab => tab.key !== tabKey));
-  };
+  const titleBarPlaceholder = intl.formatMessage({ id: 'title_bar_placeholder' });
 
   return (
     <RawIntlProvider value={intl}>
-      <div className={styles.main}>
-        <SideBarLayout className={styles.layout}>
-          <SideBarLayoutItem contentType="left-sidebar" className={styles.sidebar} isClosed={false}>
-            <div className={styles.content}>
-              aaa
-            </div>
-          </SideBarLayoutItem>
-          <SideBarLayoutItem contentType="content" className={styles.content} isClosed={false}>
-            <div className={styles.content}>
-              <TitleBar title={titleBarPlaceholder} />
-              
-              {tabs.length > 0 ? (
-                <Tab 
-                  defaultKey={tabs[0].key} 
-                  onTabClose={handleTabClose}
-                >
-                  {tabs.map(tab => (
-                    <TabItem 
-                      key={tab.key} 
-                      tabKey={tab.key} 
-                      label={tab.label}
-                    >
-                      Content for {tab.label}
-                    </TabItem>
-                  ))}
-                </Tab>
-              ) : (
-                <div className={styles.noTabs}>
-                  No tabs available
-                </div>
-              )}
-              
-              Hello
-            </div>
-          </SideBarLayoutItem>
-          <SideBarLayoutItem contentType="right-sidebar" className={styles.sidebar} isClosed={true}>
-            <div className={styles.content}>
-              dddd
-            </div>
-          </SideBarLayoutItem>
-        </SideBarLayout>
-      </div>
+      <TabManagerProvider>
+        <div className={styles.main}>
+          <SideBarLayout className={styles.layout}>
+            <SideBarLayoutItem contentType="left-sidebar" className={styles.sidebar} isClosed={false}>
+              <div className={styles.content}>
+                <TabControls />
+              </div>
+            </SideBarLayoutItem>
+            <SideBarLayoutItem contentType="content" className={styles.content} isClosed={false}>
+              <div className={styles.content}>
+                <TitleBar title={titleBarPlaceholder} />
+                <TabManager />
+              </div>
+            </SideBarLayoutItem>
+            <SideBarLayoutItem contentType="right-sidebar" className={styles.sidebar} isClosed={true}>
+              <div className={styles.content}>
+                Settings and Info
+              </div>
+            </SideBarLayoutItem>
+          </SideBarLayout>
+        </div>
+      </TabManagerProvider>
     </RawIntlProvider>
   );
 };
