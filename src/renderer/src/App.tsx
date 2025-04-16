@@ -36,10 +36,10 @@ const TabControls: React.FC = () => {
   const handleOpenPdf = () => {
     // ローカルパスを直接指定してPDFを開く
     addTab({
-      label: "Zotero PDF",
+      label: "Sample PDF",
       type: "pdf",
       props: { 
-        src: "/Users/tomokikuchi/Zotero/storage/JP8TZZU9/Tamašauskaitė と Groth - 2023 - Defining a Knowledge Graph Development Process Through a Systematic Review.pdf" 
+        src: "/Users/tomokikuchi/Downloads/rishu_final.pdf" 
       }
     });
   };
@@ -88,7 +88,7 @@ const App: React.FC = () => {
               </div>
             </SideBarLayoutItem>
             <SideBarLayoutItem contentType="content" className={styles.content} isClosed={false}>
-              <div className={styles.content}>
+              <div className={styles.mainContent}>
                 <TitleBar title={titleBarPlaceholder} />
                 <TabManager />
               </div>

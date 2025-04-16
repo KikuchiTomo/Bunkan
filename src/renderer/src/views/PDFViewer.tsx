@@ -141,8 +141,9 @@ const PDFViewer: React.FC<PDFViewerProps> = ({ src, title }) => {
       </div>
     );
   }
-
+  
   if (!pdfData) {
+   
     return (
       <div className={styles.errorContainer}>
         <p>PDFデータが読み込まれていません</p>
@@ -151,26 +152,13 @@ const PDFViewer: React.FC<PDFViewerProps> = ({ src, title }) => {
   }
   
   return (
-    <div className={styles.pdfViewer}>
-      <div className={styles.pdfHeader}>
-        <h2>{title || fileName}</h2>
-        <div className={styles.pdfControls}>
-          <button>表示サイズ +</button>
-          <button>表示サイズ -</button>
-          <button>全画面表示</button>
-          <button onClick={() => {
-            cacheManager.removePDF(src);
-            console.log(`Removed ${src} from cache`);
-          }}>
-            キャッシュ削除
-          </button>
-        </div>
-      </div>
+    <div className={styles.pdfViewer}>     
       
       <div className={styles.pdfContent}>
-        <iframe 
-          src={`${pdfData}#toolbar=1&navpanes=1`} 
+        <iframe    
+          src={`${pdfData}`}           
           title={title || fileName} 
+          // type='application/pdf'
           width="100%" 
           height="100%" 
           className={styles.pdfIframe} 
