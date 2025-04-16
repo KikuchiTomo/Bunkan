@@ -11,6 +11,8 @@ import {
 } from "react";
 
 import styles from "./TitleBar.module.css";
+import "@fontsource-variable/roboto-mono/wght.css";
+import "@fontsource/fira-code/400.css";
 
 type TitleBarProps = {
 	title: string;
@@ -18,13 +20,12 @@ type TitleBarProps = {
 
 export const TitleBar: FC<TitleBarProps> = ({ title }) => {
 	  return (
-	<div className={styles.titleBar}>
-	  <input className={styles.title}/>
-	  <div className={styles.buttonGroup}>
-		<button className={classNames(styles.button, styles.close)} />
-		<button className={classNames(styles.button, styles.minimize)} />
-		<button className={classNames(styles.button, styles.maximize)} />
-	  </div>
-	</div>
+		<div className={classNames(styles.titleBar)}>		
+			<div className={styles.buttonGroup}>		
+			</div>	  
+			<input className={styles.title} placeholder={title} />
+	  		<div className={styles.buttonGroup}>		
+	  		</div>
+		</div>
   );
 }

@@ -1,0 +1,7 @@
+:root{
+	--window-background-color: rgb(190, 190, 190); 
+	--window-background-noise-color: rgba(214, 186, 245, 1.0);
+
+	--window-background-filter-contrast: 100%;
+	--window-background-filter-brightness: 100%;
+}
