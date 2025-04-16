@@ -87,8 +87,7 @@
 	background-color: var(--tab-bar-close-button-background-color-hover);
   }
   
-  .tabBody {
-	padding: 16px;
+  .tabBody {	
 	border: none;
 	outline: none;
   }
